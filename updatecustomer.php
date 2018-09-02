@@ -1,4 +1,14 @@
-
+<?php
+session_start();
+if(empty($_SESSION['username']))
+{
+    header('Location:signin.php');
+}
+else{
+    echo "<script type='text/javascript'>alert('Please Log In');</script>";
+    header('Location:signin.php');
+}
+?>
 <?php
 $host="localhost";
 $uname="root";
@@ -38,7 +48,7 @@ if($conn->connect_error)
         die("Error in Connection");
     }
 $id =$_GET['id'];
-$query = "UPDATE customers SET fname='".$fname."', lname='".$lname."', sex='".$sex."', age='".$age."', country='".$country."', adate='".$date."', email='".$email."', phone='".$phone."', interest='".$interest."')";
+$query = "UPDATE customers SET fname='".$fname."', lname='".$lname."', sex='".$sex."', age='".$age."', country='".$country."', date='".$date."', email='".$email."', phone='".$phone."', interest='".$interest."')";
 $result=$conn->query($query);
 if(!$query){
     die('Invalid Query'.mysql_error());

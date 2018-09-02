@@ -21,13 +21,13 @@ if($result->num_rows>0)
 {
     $_SESSION["username"]=$username;
     $_SESSION["password"]=$password;
-    header('Location:home.php');
+    echo "<script type='text/javascript'>location.href = 'home.php';</script>";
     exit();
 }
 else
 {
     echo "<script type='text/javascript'>alert('Invalid Login');</script>";
-
+    echo "<script type='text/javascript'>location.href='signin.php';</script>";
 }
 $conn->close();
 }

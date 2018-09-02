@@ -1,4 +1,13 @@
 <?php
+session_start();
+if(empty($_SESSION["username"]))
+{
+    echo "<script type='text/javascript'>alert('Please Log In');</script>";
+    header('Location:signin.php');
+}
+
+?>
+<?php
 if(isset($_POST['submit']))
 {
 $fname=$_POST['fname'];
@@ -19,7 +28,7 @@ if($conn->connect_error)
     {
         die("Error in Connection");
     }
-$query = "INSERT INTO customers(fname, lname, sex, age, country, adate, email, phone, interest) VALUES('".$fname."','".$lname."','".$sex."','".$age."','".$country."','".$date."','".$email."','".$phone."','".$interest."')";
+$query = "INSERT INTO customers(fname, lname, sex, age, country, date, email, phone, interest) VALUES('".$fname."','".$lname."','".$sex."','".$age."','".$country."','".$date."','".$email."','".$phone."','".$interest."')";
 $result=$conn->query($query);
 if(!$query){
     die('Invalid Query'.mysql_error());

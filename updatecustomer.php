@@ -4,59 +4,17 @@ if(empty($_SESSION['username']))
 {
     header('Location:signin.php');
 }
-else{
-    echo "<script type='text/javascript'>alert('Please Log In');</script>";
-    header('Location:signin.php');
-}
 ?>
 <?php
 include_once "connection.php";
-if($conn->connect_error)
-    {
-        die("Error in Connection");
-    }
 $id =$_GET['pid'];
-$query = "SELECT * FROM customers WHERE id=".$id."";
+$query = "SELECT * FROM customers WHERE id='$id'";
 $result=$conn->query($query);
 if(!$query){
     die('Invalid Query'.mysql_error());
     header('Location:signin.php');
 }
 $conn->close();
-if(isset($_POST['submit']))
-{
-$fname=$_POST['fname'];
-$lname=$_POST['lname'];
-$sex=$_POST['sex'];
-$age=$_POST['age'];
-$country=$_POST['country'];
-$date=$_POST['date'];
-$email=$_POST['email'];
-$phone=$_POST['phone'];
-$interest=$_POST['interest'];
-$host="localhost";
-$uname="root";
-$pass="toor";
-$dbname="hostel";
-$conn=new mysqli($host,$uname,$pass,$dbname);
-if($conn->connect_error)
-    {
-        die("Error in Connection");
-    }
-$id =$_GET['id'];
-$query = "UPDATE customers SET fname='".$fname."', lname='".$lname."', sex='".$sex."', age='".$age."', country='".$country."', date='".$date."', email='".$email."', phone='".$phone."', interest='".$interest."')";
-$result=$conn->query($query);
-if(!$query){
-    die('Invalid Query'.mysql_error());
-    header('Location:signin.php');
-}
-else
-{
-    echo "<script type='text/javascript'>alert('Data Updated!');</script>";
-    header('Location:home.php');
-}
-$conn->close();
-}
 ?>
 
 
@@ -84,7 +42,7 @@ $conn->close();
                 {
                     ?>
             <div class="col-md-4 offset-md-4">
-                <form name="login-form" method="POST" action="home.php">
+                <form name="update-form" method="POST" action="updatecustomerbe.php">
                       <div class="form-group">
                         <label for="fname">First Name</label>
                         <input type="text" class="form-control" name="fname" placeholder="Enter First Name"  value="<?php echo($row['fname']) ?>">

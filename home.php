@@ -9,18 +9,18 @@ if(empty($_SESSION["username"]))
 ?>
 <?php
 include_once "connection.php";
-if(isset($_GET['submit']))
+if(isset($POST['submit']))
 {
-$fname=$_GET['fname'];
-$lname=$_GET['lname'];
-$sex=$_GET['sex'];
-$age=$_GET['age'];
-$country=$_GET['country'];
-$date=$_GET['date'];
-$email=$_GET['email'];
-$phone=$_GET['phone'];
-$interest=$_GET['interest'];
-$query = "INSERT INTO customers(fname, lname, sex, age, country, date, email, phone, interest) VALUES('$fname','$lname','$sex','$age','$country','$date','$email','$phone','$interest')";
+$fname=$POST['fname'];
+$lname=$POST['lname'];
+$sex=$POST['sex'];
+$age=$POST['age'];
+$country=$POST['country'];
+$date=$POST['date'];
+$email=$POST['email'];
+$phone=$POST['phone'];
+$interest=$POST['interest'];
+$query = "INSERT INTO customers(fname, lname, sex, age, country, `date`, email, phone, interest) VALUES('$fname','$lname','$sex','$age','$country','$date','$email','$phone','$interest')";
 $result=mysqli_query($conn,$query);
 if($result){
     echo("Successful");
@@ -60,7 +60,7 @@ $conn->close();
                     <a href="home.php"><img src="budget_logo.png" alt="Logo of Budget Trekking" width="120px" style="margin: 30px 30px 30px 100px;"></a>
             </div>
             <div class="col-md-4 offset-md-4">
-                <form name="login-form" method="GET" action="home.php" id="myForm">
+                <form name="insert-form" method="POST" action="home.php" id="myForm">
                       <div class="form-group">
                         <label for="fname">First Name</label>
                         <input type="text" class="form-control" name="fname" placeholder="Enter First Name" >

@@ -25,7 +25,7 @@ $conn->close();
     <div class="container">
         <div class="row">
             <div class="col-md-4 offset-md-4" >
-                    <a href="home.php"><img src="budget_logo.png" alt="Logo of Budget Trekking" width="120px" style="margin: 30px 30px 30px 100px;"></a>
+                    <a href="index.php"><img src="budget_logo.png" alt="Logo of Budget Trekking" width="120px" style="margin: 30px 30px 30px 100px;"></a>
             </div>
         <div class="col-md-12">
             <table class="table table-hover">

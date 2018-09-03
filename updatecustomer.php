@@ -34,7 +34,7 @@ $conn->close();
                 <button type="submit" class="btn btn-danger" name="signout" style="margin:5px; display: 'inline'">Logout</button></form>
             </div>
             <div class="col-md-4 offset-md-4" >
-                    <a href="home.php"><img src="budget_logo.png" alt="Logo of Apple" width="120px" style="margin: 30px 30px 30px 100px;"></a>
+                    <a href="index.php"><img src="budget_logo.png" alt="Logo of Apple" width="120px" style="margin: 30px 30px 30px 100px;"></a>
             </div>
             <?php
                     if($result->num_rows>0){

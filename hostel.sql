@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 03, 2018 at 01:57 AM
+-- Generation Time: Sep 03, 2018 at 03:50 PM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -38,7 +38,8 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `fname`, `lname`, `sex`, `age`, `country`, `date`, `email`, `phone`, `interest`) VALUES
-(0, 'Guru', 'Baba', 'Male', 23, 'NP', '2018-09-01', 'hello@gmail.com', '9801123451', 'Trekking');
+(1, 'Guru', 'Baba', 'Male', 23, 'NP', '2018-09-01', 'hello@gmail.com', '9801123451', 'Trekking'),
+(2, 'Aayush', 'Giri', 'Male', 23, 'AX', '2018-09-05', 'sharmagiriaayush@gmail.com', '9845369136', 'Hiking');
 
 -- --------------------------------------------------------
 
@@ -78,6 +79,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `customers`
+--
+ALTER TABLE `customers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`

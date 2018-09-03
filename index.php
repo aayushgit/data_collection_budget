@@ -2,8 +2,9 @@
 session_start();
 if(empty($_SESSION["username"]))
 {
-    echo "<script type='text/javascript'>alert('Please Log In');</script>";
     header('Location:signin.php');
+    echo "<script type='text/javascript'>alert('Please Log In');</script>";
+
 }
 
 ?>

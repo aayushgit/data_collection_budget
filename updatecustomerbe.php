@@ -1,7 +1,15 @@
 <?php
+session_start();
+if(empty($_SESSION['username']))
+{
+    header('Location:signin.php');
+}
+?>
+<?php
 include_once "connection.php";
 if(isset($_POST['submit']))
 {
+$id=$_POST['id'];
 $fname=$_POST['fname'];
 $lname=$_POST['lname'];
 $sex=$_POST['sex'];
@@ -11,12 +19,15 @@ $date=$_POST['date'];
 $email=$_POST['email'];
 $phone=$_POST['phone'];
 $interest=$_POST['interest'];
-$query = "UPDATE customers SET fname='$fname', lname='$lname', sex='$sex', age='$age', country='$country', date='$date', email='$email', phone='$phone', interest='$interest')";
+
+$query = "UPDATE customers SET fname='$fname', lname='$lname', sex='$sex', age='$age', country='$country', date='$date', email='$email', phone='$phone', interest='$interest') WHERE id='$id'";
 $result=mysqli_query($conn,$query);
+echo($query);
 if($result){
-    echo("Successful");
-    echo "<font color='green'>Data added successfully.";
     header('Location:index.php');
+    echo("Successful");
+    echo "<font color='green'>Data updated successfully.";
+
 }
 else
 {

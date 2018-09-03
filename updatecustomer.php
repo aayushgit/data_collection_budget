@@ -14,9 +14,7 @@ if(!$query){
     die('Invalid Query'.mysql_error());
     header('Location:signin.php');
 }
-$conn->close();
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -43,6 +41,10 @@ $conn->close();
                     ?>
             <div class="col-md-4 offset-md-4">
                 <form name="update-form" method="POST" action="updatecustomerbe.php">
+                    <div class="form-group">
+                        <label for="id">First Name</label>
+                        <input type="text" class="form-control" name="id" value="<?php echo($row['id']) ?>">
+                      </div>
                       <div class="form-group">
                         <label for="fname">First Name</label>
                         <input type="text" class="form-control" name="fname" placeholder="Enter First Name"  value="<?php echo($row['fname']) ?>">

@@ -6,17 +6,9 @@ if(empty($_SESSION['username']))
 }
 ?>
 <?php
-$host="localhost";
-$uname="root";
-$pass="toor";
-$dbname="hostel";
-$conn=new mysqli($host,$uname,$pass,$dbname);
-if($conn->connect_error)
-    {
-        die("Error in Connection");
-    }
+include_once "connection.php";
 $query = "SELECT * FROM customers";
-$result=$conn->query($query);
+$result=mysqli_query($conn,$query);
 if(!$query){
     die('Invalid Query' .mysql_error());
 }
@@ -33,7 +25,7 @@ $conn->close();
     <div class="container">
         <div class="row">
             <div class="col-md-4 offset-md-4" >
-                    <a href="home.php"><img src="budget_logo.png" alt="Logo of Apple" width="120px" style="margin: 30px 30px 30px 100px;"></a>
+                    <a href="home.php"><img src="budget_logo.png" alt="Logo of Budget Trekking" width="120px" style="margin: 30px 30px 30px 100px;"></a>
             </div>
         <div class="col-md-12">
             <table class="table table-hover">

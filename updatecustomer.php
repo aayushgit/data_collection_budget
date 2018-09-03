@@ -10,11 +10,7 @@ else{
 }
 ?>
 <?php
-$host="localhost";
-$uname="root";
-$pass="toor";
-$dbname="hostel";
-$conn=new mysqli($host,$uname,$pass,$dbname);
+include_once "connection.php";
 if($conn->connect_error)
     {
         die("Error in Connection");

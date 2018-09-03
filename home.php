@@ -8,36 +8,30 @@ if(empty($_SESSION["username"]))
 
 ?>
 <?php
-if(isset($_POST['submit']))
+include_once "connection.php";
+if(isset($_GET['submit']))
 {
-$fname=$_POST['fname'];
-$lname=$_POST['lname'];
-$sex=$_POST['sex'];
-$age=$_POST['age'];
-$country=$_POST['country'];
-$date=$_POST['date'];
-$email=$_POST['email'];
-$phone=$_POST['phone'];
-$interest=$_POST['interest'];
-$host="localhost";
-$uname="root";
-$pass="toor";
-$dbname="hostel";
-$conn=new mysqli($host,$uname,$pass,$dbname);
-if($conn->connect_error)
-    {
-        die("Error in Connection");
-    }
-$query = "INSERT INTO customers(fname, lname, sex, age, country, date, email, phone, interest) VALUES('".$fname."','".$lname."','".$sex."','".$age."','".$country."','".$date."','".$email."','".$phone."','".$interest."')";
-$result=$conn->query($query);
-if(!$query){
-    die('Invalid Query'.mysql_error());
-    header('Location:signin.php');
+$fname=$_GET['fname'];
+$lname=$_GET['lname'];
+$sex=$_GET['sex'];
+$age=$_GET['age'];
+$country=$_GET['country'];
+$date=$_GET['date'];
+$email=$_GET['email'];
+$phone=$_GET['phone'];
+$interest=$_GET['interest'];
+$query = "INSERT INTO customers(fname, lname, sex, age, country, date, email, phone, interest) VALUES('$fname','$lname','$sex','$age','$country','$date','$email','$phone','$interest')";
+$result=mysqli_query($conn,$query);
+if($result){
+    echo("Successful");
+    echo "<font color='green'>Data added successfully.";
+    header('Location:home.php');
+
 }
 else
 {
-    echo "<script type='text/javascript'>alert('Data Inserted!');</script>";
-    header('Location:home.php');
+    die('No Database Operation');
+    header('Location:signin.php');
 }
 $conn->close();
 }
@@ -63,7 +57,7 @@ $conn->close();
                 <button type="submit" class="btn btn-danger" name="signout" style="margin:5px; display: 'inline'">Logout</button></form>
             </div>
             <div class="col-md-4 offset-md-4" >
-                    <a href="home.php"><img src="budget_logo.png" alt="Logo of Apple" width="120px" style="margin: 30px 30px 30px 100px;"></a>
+                    <a href="home.php"><img src="budget_logo.png" alt="Logo of Budget Trekking" width="120px" style="margin: 30px 30px 30px 100px;"></a>
             </div>
             <div class="col-md-4 offset-md-4">
                 <form name="login-form" method="GET" action="home.php" id="myForm">

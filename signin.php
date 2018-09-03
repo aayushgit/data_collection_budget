@@ -5,7 +5,7 @@ if(isset($_POST['submit']))
 {
 $username=$_POST['username'];
 $password=$_POST['pwd'];
-$query = "SELECT * FROM users WHERE name='".$username."' AND password='".$password."'";
+$query = "SELECT * FROM users WHERE name='$username' AND password='$password'";
 $result=mysqli_query($conn,$query);
 if(!$query){
     die('Invalid Query' .mysql_error());
